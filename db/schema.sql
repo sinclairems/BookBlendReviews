@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS bookBlend_db;
+CREATE DATABASE bookBlend_db;
