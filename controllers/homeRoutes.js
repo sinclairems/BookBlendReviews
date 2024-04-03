@@ -30,5 +30,44 @@ router.get('/login', (req, res) => {
   
     res.render('login');
   });
+
+router.get('/user', async (req, res) => {
+    try {
+        const userData = User.findAll({
+            attributes: { exclude: ['password'] },
+        });
+
+        const users = userData.map((user) => user.get({ plain: true }));
+
+        res.json(users);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/book', async (req, res) => {
+    try {
+        const bookData = Book.findAll();
+
+        const books = bookData.map((book) => book.get({ plain: true }));
+
+        res.json(books);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
+router.get('/comment', async (req, res) => {
+    try {
+        const commentData = Comment.findAll();
+
+        const comments = commentData.map((comment) => comment.get({ plain: true }));
+
+        res.json(comments);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
   
   module.exports = router;
