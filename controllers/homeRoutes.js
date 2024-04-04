@@ -21,6 +21,7 @@ router.get('/profile', withAuth, async (req, res) => {
     }
   });
 
+// ?
 router.get('/', async (req, res) => {
     try {
         res.json('Goodbye World!');
@@ -29,6 +30,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+// ?
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect the request to another route
     if (req.session.logged_in) {
@@ -39,6 +41,7 @@ router.get('/login', (req, res) => {
     res.render('login');
   });
 
+// ?
 router.get('/user', async (req, res) => {
     try {
         const userData = await User.findAll({
@@ -53,6 +56,7 @@ router.get('/user', async (req, res) => {
     }
 });
 
+// Redirect to book if user is not logged in
 router.get('/book', async (req, res) => {
     try {
         const bookData = await Book.findAll();
@@ -65,7 +69,7 @@ router.get('/book', async (req, res) => {
     }
 });
 
-
+// Redirect to comment if user is not logged in
 router.get('/comment', async (req, res) => {
     try {
         const commentData = await Comment.findAll();
