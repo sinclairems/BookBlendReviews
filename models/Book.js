@@ -13,8 +13,8 @@ Book.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
-        },
+            autoIncrement: true,
+          },
         //title column
         title: {
             type: DataTypes.STRING,
@@ -27,7 +27,7 @@ Book.init(
         },
         //isbn column
         isbn: {
-            isbn: DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         //pages column
@@ -52,9 +52,9 @@ Book.init(
         timestamps: false,
         freezeTableName: true, 
         underscored: true,
-        modelName: 'bookData'
-    }
-    
+        modelName: 'book'
+    }  
 )
 
-module.exports = Book; // Exporting the model
+// Exporting the model
+module.exports = Book; 
