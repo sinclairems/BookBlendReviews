@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Leah Perry",
+    "email": "leah.perry@example.com",
+    "password": "rommel"
+  },
+  {
+    "name": "Mae Morgan",
+    "email": "mae.morgan@example.com",
+    "password": "nathanie"
+  },
+  {
+    "name": "Eddie Price",
+    "email": "eddie.price@example.com",
+    "password": "umpire"
+  },
+  {
+    "name": "Henry Gray",
+    "email": "henry.gray@example.com",
+    "password": "basketball"
+  },
+  {
+    "name": "Clara Kim",
+    "email": "clara.kim@example.com",
+    "password": "aaaaaa1"
+  },
+  {
+    "name": "Ralph Walker",
+    "email": "ralph.walker@example.com",
+    "password": "arctic"
+  }
+]
