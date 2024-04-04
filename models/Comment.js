@@ -30,7 +30,7 @@ Comment.init(
   },
   {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     modelName: "comment",
   }
 );
