@@ -8,13 +8,13 @@ class Book extends Model {}
 //define the table columns and configuration
 Book.init(
     {
+        //id column
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
           },
-
         //title column
         title: {
             type: DataTypes.STRING,
