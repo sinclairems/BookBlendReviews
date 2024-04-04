@@ -33,7 +33,7 @@ router.get('/login', (req, res) => {
 
 router.get('/user', async (req, res) => {
     try {
-        const userData = User.findAll({
+        const userData = await User.findAll({
             attributes: { exclude: ['password'] },
         });
 
@@ -47,7 +47,7 @@ router.get('/user', async (req, res) => {
 
 router.get('/book', async (req, res) => {
     try {
-        const bookData = Book.findAll();
+        const bookData = await Book.findAll();
 
         const books = bookData.map((book) => book.get({ plain: true }));
 
@@ -60,7 +60,7 @@ router.get('/book', async (req, res) => {
 
 router.get('/comment', async (req, res) => {
     try {
-        const commentData = Comment.findAll();
+        const commentData = await Comment.findAll();
 
         const comments = commentData.map((comment) => comment.get({ plain: true }));
 

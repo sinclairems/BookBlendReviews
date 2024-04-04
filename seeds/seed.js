@@ -13,7 +13,7 @@ const seedDatabase = async () => {
         returning: true,
     });
 
-    const books = await Book.bulkCreate(bookData);
+    // const books = await Book.bulkCreate(bookData);
 
     const comments = await Comment.bulkCreate(commentData);
 
