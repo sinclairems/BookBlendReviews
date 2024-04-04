@@ -8,6 +8,13 @@ class Book extends Model {}
 //define the table columns and configuration
 Book.init(
     {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+          },
+
         //title column
         title: {
             type: DataTypes.STRING,
@@ -20,7 +27,7 @@ Book.init(
         },
         //isbn column
         isbn: {
-            isbn: DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         //pages column
@@ -46,8 +53,8 @@ Book.init(
         freezeTableName: true, 
         underscored: true,
         modelName: 'bookData'
-    }
-    
+    }  
 )
 
-module.exports = Book; // Exporting the model
+// Exporting the model
+module.exports = Book; 
