@@ -21,7 +21,7 @@ Book.init(
             allowNull: false
         },
         //author column
-        Author: {
+        author: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -43,7 +43,7 @@ Book.init(
         },
         //is_paperback column
         isPaperback: {
-            type: DataTypes.Boolean, 
+            type: DataTypes.BOOLEAN, 
             allowNull: true
         }
     },
