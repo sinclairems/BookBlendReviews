@@ -23,7 +23,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        res.json('Hello World!');
+        res.json('Goodbye World!');
     } catch (err) {
         res.status(500).json(err);
     }
