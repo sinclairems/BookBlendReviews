@@ -42,7 +42,7 @@ Book.init(
             allowNull: false
         },
         //is_paperback column
-        isPaperback: {
+        is_paperback: {
             type: DataTypes.BOOLEAN, 
             allowNull: true
         }
@@ -52,7 +52,7 @@ Book.init(
         timestamps: false,
         freezeTableName: true, 
         underscored: true,
-        modelName: 'book'
+        modelName: 'book',
     }  
 )
 
