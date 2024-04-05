@@ -12,4 +12,14 @@ Comment.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
+// Book has many Comments
+Book.hasMany(Comment, {
+    foreignKey: 'book_id'
+});
+
+// Comment belongs to Book
+Comment.belongsTo(Book, {
+    foreignKey: 'book_id'
+});
+
 module.exports = { User, Book, Comment};

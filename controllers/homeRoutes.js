@@ -2,6 +2,14 @@ const router = require('express').Router();
 const { User, Book, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+router.get('/', async (req, res) => {
+    try {
+        res.render('homepage');
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
     try {
@@ -21,13 +29,34 @@ router.get('/profile', withAuth, async (req, res) => {
     }
   });
 
-// ?
-router.get('/', async (req, res) => {
+router.get('/review', withAuth, async (req, res) => {
     try {
-        res.json('Goodbye World!');
+        res.render('review');
     } catch (err) {
         res.status(500).json(err);
     }
+});
+
+router.get('/book/:id', async (req, res) => {
+    try {
+        const bookData = await Book.findByPk(req.params.id, {
+            include: [
+                {
+                    model: Comment,
+                    include: User
+                }
+            ]
+        });
+
+        const book = bookData.get({ plain: true });
+
+        res.render('book', {
+            ...book,
+            logged_in: req.session.logged_in
+        });
+      } catch (err) {
+        res.status(500).json(err);
+      }
 });
 
 // ?
