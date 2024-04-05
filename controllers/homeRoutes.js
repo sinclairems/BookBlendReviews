@@ -59,33 +59,19 @@ router.get('/book/:id', async (req, res) => {
       }
 });
 
-// ?
+// Redirect to login if user is not logged in
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect the request to another route
     if (req.session.logged_in) {
-      res.redirect('/profile');
+      res.redirect(req.session.redirectTo || '/profile');
+      delete req.session.redirectTo;
       return;
     }
   
     res.render('login');
   });
 
-// ?
-router.get('/user', async (req, res) => {
-    try {
-        const userData = await User.findAll({
-            attributes: { exclude: ['password'] },
-        });
-
-        const users = userData.map((user) => user.get({ plain: true }));
-
-        res.json(users);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-// Redirect to book if user is not logged in
+// Get a random book
 router.get('/book', async (req, res) => {
     try {
         const bookIds = await Book.findAll({ attributes: ['id'] });
@@ -114,31 +100,5 @@ router.get('/book', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
-// Redirect to review if user is not logged in
-router.get('/review', async (req, res) => {
-    try {
-        const reviewData = await Review.findAll();
-
-        const reviews = reviewData.map((review) => review.get({ plain: true }));
-
-        res.json(reviews);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-router.get('/comments', async (req, res) => {
-    try {
-        const reviewData = await Review.findAll();
-
-        const reviews = reviewData.map((review) => review.get({ plain: true }));
-
-        res.json(reviews);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-}
-);
   
   module.exports = router;
