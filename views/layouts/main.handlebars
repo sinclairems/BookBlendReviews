@@ -12,21 +12,25 @@
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
       <nav>
+        <a href="/">Home</a> 
+        <a href="/books">View Books</a>
+        <a href="/reviews">Write a Review</a>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
+        <a href="/profile">Profile</a> |
+        <button class="no-button" id="logout">Logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login">Login</a>
         {{/if}}
       </nav>
     </header>
     <main class="container container-fluid mt-5">
+      <h1>Book Blend Reviews</h1>
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
     <footer>
-      
+      <p>Book Blend Reviews</p>
     </footer>
   </div>
 
