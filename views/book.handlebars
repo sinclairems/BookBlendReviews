@@ -1,9 +1,18 @@
-{{!-- Book title <h1></h1>
-      Book Cover Image <img>
-      Author
-      Number of Pages
-      Reviews already made (divs>)
-      Rating (if time)
-      Option to make a review -- text box Tell us what you thought!
-    Gallery style that user can click through to see all books
- --}}
+<section>
+  <h1>{{title}}</h1>
+  <img src="{{image}}" alt="{{title}}">
+  <p>Author: {{author}}</p>
+  <p>Number of Pages: {{pages}}</p>
+  <p>Reviews:</p>
+  {{#each reviews}}
+  <div>
+    <p>{{this.reviews}}</p>
+    <p>Rating: {{this.rating}}</p>
+  </div>
+  {{/each}}
+  <div>
+    <button>Previous</button>
+    <button>Next</button>
+    <button>Write A Review</button>
+  </div>
+</section>
