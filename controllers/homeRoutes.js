@@ -29,13 +29,34 @@ router.get('/profile', withAuth, async (req, res) => {
     }
   });
 
-// ?
-router.get('/', async (req, res) => {
+router.get('/review', withAuth, async (req, res) => {
     try {
-        res.json('Goodbye World!');
+        res.render('review');
     } catch (err) {
         res.status(500).json(err);
     }
+});
+
+router.get('/book/:id', async (req, res) => {
+    try {
+        const bookData = await Book.findByPk(req.params.id, {
+            include: [
+                {
+                    model: Comment,
+                    include: User
+                }
+            ]
+        });
+
+        const book = bookData.get({ plain: true });
+
+        res.render('book', {
+            ...book,
+            logged_in: req.session.logged_in
+        });
+      } catch (err) {
+        res.status(500).json(err);
+      }
 });
 
 // ?
