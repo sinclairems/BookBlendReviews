@@ -32,7 +32,7 @@ You and your group will use everything you’ve learned over the past six module
 
 * Be interactive (i.e., accept and respond to user input).
 
-* Meet good-quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).
+* Meet good-quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality reviews, etc.).
 
 * Have a professional README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
@@ -88,7 +88,7 @@ This project is graded based on the following criteria:
 
 * Repository follows best practices for file structure and naming conventions.
 
-* Repository follows best practices for class/id-naming conventions, indentation, quality comments, etc.
+* Repository follows best practices for class/id-naming conventions, indentation, quality reviews, etc.
 
 * Repository contains multiple descriptive commit messages.
 
