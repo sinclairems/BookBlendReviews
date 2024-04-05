@@ -5,7 +5,8 @@
       "isbn": "9780674729018",
       "pages": 272,
       "edition": 1,
-      "is_paperback": true
+      "is_paperback": true,
+      "filename": "A Philosophy of Walking.jpg"
     },
     {
       "title":
@@ -14,7 +15,8 @@
       "isbn": "9781451673319",
       "pages": 248,
       "edition": 1,
-      "is_paperback": true
+      "is_paperback": true,
+      "filename": "Farenheight 451.jpg"
     },
     {
       "title":
@@ -23,7 +25,8 @@
       "isbn": "9780807047452",
       "pages": 288,
       "edition": 1,
-      "is_paperback": true
+      "is_paperback": true,
+      "filename": "In Five Years.jpg"
     },
     {
       "title": "The Silent Patient",
@@ -31,7 +34,8 @@
       "isbn": "9781250301703",
       "pages": 368,
       "edition": 1,
-      "is_paperback": false
+      "is_paperback": false,
+      "filename": "The Silent Patient.jpg"
     },
     {
       "title": "Every Summer After",
@@ -39,7 +43,8 @@
       "isbn": "9780593438534",
       "pages": 320,
       "edition": 2,
-      "is_paperback": false
+      "is_paperback": false,
+      "filename": "Every Summer After.jpg"
     },
     {
       "title": "The Last Thing He Told Me",
@@ -47,6 +52,7 @@
       "isbn": "9781501171352",
       "pages": 336,
       "edition": 1,
-      "is_paperback": true
+      "is_paperback": true,
+      "filename": "The Last Thing He Told Me.jpg"
     }
   ]

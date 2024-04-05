@@ -1,6 +1,6 @@
 <section>
   <h1>{{title}}</h1>
-  <img src="{{image}}" alt="{{title}}">
+  <img src="{{filename}}" alt="{{title}}">
   <p>Author: {{author}}</p>
   <p>Number of Pages: {{pages}}</p>
   <p>Reviews:</p>
@@ -13,6 +13,10 @@
   <div>
     <button>Previous</button>
     <button>Next</button>
-    <button>Write A Review</button>
+    <button><a href='/views/review.handlebars'>Write A Review</a></button>
   </div>
 </section>
+
+{{!--
+How do I connect the images in public/images to the image property in the book object?
+ --}}

@@ -45,7 +45,11 @@ Book.init(
         is_paperback: {
             type: DataTypes.BOOLEAN, 
             allowNull: true
-        }
+        },
+        filename: {
+            type: DataTypes.STRING,
+            allowNull: false,
+    },
     },
     {
         sequelize,
