@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { User, Book, Comment } = require('../models');
+const { User, Book, Review } = require('../models');
 const withAuth = require('../utils/auth');
+const getRandomBook = require('../utils/helpers');
 
 router.get('/', async (req, res) => {
     try {
@@ -42,7 +43,7 @@ router.get('/book/:id', async (req, res) => {
         const bookData = await Book.findByPk(req.params.id, {
             include: [
                 {
-                    model: Comment,
+                    model: Review,
                     include: User
                 }
             ]
@@ -88,27 +89,41 @@ router.get('/user', async (req, res) => {
 // Redirect to book if user is not logged in
 router.get('/book', async (req, res) => {
     try {
-        const bookData = await Book.findAll();
 
-        const books = bookData.map((book) => book.get({ plain: true }));
+        const bookData = await Book.findByPk();
 
-        res.json(books);
+      res.render('book', {
+        ...book,
+        });
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
-// Redirect to comment if user is not logged in
-router.get('/comment', async (req, res) => {
+// Redirect to review if user is not logged in
+router.get('/review', async (req, res) => {
     try {
-        const commentData = await Comment.findAll();
+        const reviewData = await Review.findAll();
 
-        const comments = commentData.map((comment) => comment.get({ plain: true }));
+        const reviews = reviewData.map((review) => review.get({ plain: true }));
 
-        res.json(comments);
+        res.json(reviews);
     } catch (err) {
         res.status(500).json(err);
     }
 });
+
+router.get('/comments', async (req, res) => {
+    try {
+        const reviewData = await Review.findAll();
+
+        const reviews = reviewData.map((review) => review.get({ plain: true }));
+
+        res.json(reviews);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+);
   
   module.exports = router;
