@@ -7,3 +7,15 @@
       Option to make a review -- text box Tell us what you thought!
     Gallery style that user can click through to see all books
  --}}
+
+ <h1>{{title}}</h1>
+ <h2>{{author}}</h2>
+ <h3>{{pages}}</h3>
+
+     {{#each reviews}}
+        <div>
+            <h4>{{this.title}}</h4>
+            <p>{{this.content}}</p>
+            <p>By: {{this.user.name}}</p>
+        </div>
+    {{/each}}

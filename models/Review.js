@@ -11,6 +11,13 @@ Review.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    book_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "book",
+        key: "id",
+      },
+    },
     posted_on: {
       type: DataTypes.DATE,
       allowNull: false,

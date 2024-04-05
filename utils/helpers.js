@@ -1,5 +1,5 @@
-const getRandom = () => {
-  return Math.floor(Math.random() * 100);
+const getRandom = (max) => {
+  return Math.floor(Math.random() * max);
 }
 
 module.exports = { getRandom };
