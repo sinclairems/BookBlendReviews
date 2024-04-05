@@ -2,6 +2,14 @@ const router = require('express').Router();
 const { User, Book, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+router.get('/', async (req, res) => {
+    try {
+        res.render('homepage');
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
     try {
