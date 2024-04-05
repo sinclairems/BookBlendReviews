@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User, Book, Review } = require('../models');
 const withAuth = require('../utils/auth');
-const getRandomBook = require('../utils/helpers');
+const { getRandom } = require('../utils/helpers');
 
 router.get('/', async (req, res) => {
     try {
@@ -53,7 +53,6 @@ router.get('/book/:id', async (req, res) => {
 
         res.render('book', {
             ...book,
-            logged_in: req.session.logged_in
         });
       } catch (err) {
         res.status(500).json(err);
@@ -89,8 +88,24 @@ router.get('/user', async (req, res) => {
 // Redirect to book if user is not logged in
 router.get('/book', async (req, res) => {
     try {
+        const bookIds = await Book.findAll({ attributes: ['id'] });
+        const randomindex = getRandom(bookIds.length);
+        const randomId = bookIds[randomindex].id;
+        const bookData = await Book.findByPk(randomId, {
+            include: [
+                {
+                    model: Review,
+                    include: User
+                }
+            ]
+        });
 
-        const bookData = await Book.findByPk();
+        if (!bookData) {
+          res.status(404).json({ message: 'No book found with this id!' });
+          return;
+      }
+
+        const book = bookData.get({ plain: true });
 
       res.render('book', {
         ...book,
