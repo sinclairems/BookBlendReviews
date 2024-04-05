@@ -1,0 +1,18 @@
+<section>
+  <h1>{{title}}</h1>
+  <img src="{{image}}" alt="{{title}}">
+  <p>Author: {{author}}</p>
+  <p>Number of Pages: {{pages}}</p>
+  <p>Reviews:</p>
+  {{#each reviews}}
+  <div>
+    <p>{{this.reviews}}</p>
+    <p>Rating: {{this.rating}}</p>
+  </div>
+  {{/each}}
+  <div>
+    <button>Previous</button>
+    <button>Next</button>
+    <button>Write A Review</button>
+  </div>
+</section>

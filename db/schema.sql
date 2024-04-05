@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS bookBlend_db;
-CREATE DATABASE bookBlend_db;
+DROP DATABASE IF EXISTS bookblend_db;
+CREATE DATABASE bookblend_db;

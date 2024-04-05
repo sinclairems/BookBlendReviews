@@ -1,6 +1,15 @@
 const router = require('express').Router();
-const { User, Book, Comment } = require('../models');
+const { User, Book, Review } = require('../models');
 const withAuth = require('../utils/auth');
+const { getRandom } = require('../utils/helpers');
+
+router.get('/', async (req, res) => {
+    try {
+        res.render('homepage');
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
@@ -21,14 +30,36 @@ router.get('/profile', withAuth, async (req, res) => {
     }
   });
 
-router.get('/', async (req, res) => {
+router.get('/review', withAuth, async (req, res) => {
     try {
-        res.json('Hello World!');
+        res.render('review');
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
+router.get('/book/:id', async (req, res) => {
+    try {
+        const bookData = await Book.findByPk(req.params.id, {
+            include: [
+                {
+                    model: Review,
+                    include: User
+                }
+            ]
+        });
+
+        const book = bookData.get({ plain: true });
+
+        res.render('book', {
+            ...book,
+        });
+      } catch (err) {
+        res.status(500).json(err);
+      }
+});
+
+// ?
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect the request to another route
     if (req.session.logged_in) {
@@ -39,6 +70,7 @@ router.get('/login', (req, res) => {
     res.render('login');
   });
 
+// ?
 router.get('/user', async (req, res) => {
     try {
         const userData = await User.findAll({
@@ -53,29 +85,60 @@ router.get('/user', async (req, res) => {
     }
 });
 
+// Redirect to book if user is not logged in
 router.get('/book', async (req, res) => {
     try {
-        const bookData = await Book.findAll();
+        const bookIds = await Book.findAll({ attributes: ['id'] });
+        const randomindex = getRandom(bookIds.length);
+        const randomId = bookIds[randomindex].id;
+        const bookData = await Book.findByPk(randomId, {
+            include: [
+                {
+                    model: Review,
+                    include: User
+                }
+            ]
+        });
 
-        const books = bookData.map((book) => book.get({ plain: true }));
+        if (!bookData) {
+          res.status(404).json({ message: 'No book found with this id!' });
+          return;
+      }
 
-        res.json(books);
+        const book = bookData.get({ plain: true });
+
+      res.render('book', {
+        ...book,
+        });
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
-
-router.get('/comment', async (req, res) => {
+// Redirect to review if user is not logged in
+router.get('/review', async (req, res) => {
     try {
-        const commentData = await Comment.findAll();
+        const reviewData = await Review.findAll();
 
-        const comments = commentData.map((comment) => comment.get({ plain: true }));
+        const reviews = reviewData.map((review) => review.get({ plain: true }));
 
-        res.json(comments);
+        res.json(reviews);
     } catch (err) {
         res.status(500).json(err);
     }
 });
+
+router.get('/comments', async (req, res) => {
+    try {
+        const reviewData = await Review.findAll();
+
+        const reviews = reviewData.map((review) => review.get({ plain: true }));
+
+        res.json(reviews);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+);
   
   module.exports = router;
