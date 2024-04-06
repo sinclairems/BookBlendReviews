@@ -75,4 +75,80 @@ const postHandler = async (e) => {
     }
 }
 
-document.querySelector('#submit-review').addEventListener('click', postHandler);
+if (document.querySelector('#submit-review')) {
+    document.querySelector('#submit-review').addEventListener('click', postHandler);
+}
+
+
+const editHandler = async (e) => {
+    e.preventDefault();
+
+    const reviewCard = e.target.closest('.review-card');
+    const book_id = reviewCard.getAttribute('data-book-id');
+    const review_id = reviewCard.getAttribute('data-review-id');
+
+    const pElement = reviewCard.querySelector('.review-content');
+    const content = pElement.textContent;
+    const textArea = document.createElement('textarea');
+    textArea.textContent = content;
+
+    pElement.replaceWith(textArea);
+
+
+
+    const submitButton = document.createElement('button');
+    submitButton.textContent = 'Submit';
+    submitButton.className = 'submit-edit';
+
+    textArea.insertAdjacentElement('afterend', submitButton);
+
+    submitButton.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        const newContent = textArea.value.trim();
+
+        console.log('book_id:', book_id);
+        console.log('newContent:', newContent);
+
+        const response = await fetch(`/api/reviews/${review_id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ book_id, content: newContent }),
+        });
+        
+        if (response.ok) {
+        document.location.reload();
+        }
+    });
+};
+
+if (document.querySelector('.edit-btn')) {
+    const editButtons = document.querySelectorAll('.edit-btn');
+    editButtons.forEach((button) => {
+        button.addEventListener('click', editHandler);
+    });
+}
+
+const deleteHandler = async (e) => {
+    e.preventDefault();
+
+    const reviewCard = e.target.closest('.review-card');
+    const review_id = reviewCard.getAttribute('data-review-id');
+
+    const response = await fetch(`/api/reviews/${review_id}`, {
+        method: 'DELETE',
+    });
+
+    if (response.ok) {
+        document.location.reload();
+    }
+}
+
+if (document.querySelector('.delete-btn')) {
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    deleteButtons.forEach((button) => {
+        button.addEventListener('click', deleteHandler);
+    });
+}
