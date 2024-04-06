@@ -5,7 +5,9 @@ const { getRandom } = require('../utils/helpers');
 
 router.get('/', async (req, res) => {
     try {
-        res.render('homepage');
+        res.render('homepage', {
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -32,7 +34,9 @@ router.get('/profile', withAuth, async (req, res) => {
 
 router.get('/review', withAuth, async (req, res) => {
     try {
-        res.render('review');
+        res.render('review', {
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -53,6 +57,7 @@ router.get('/book/:id', async (req, res) => {
 
         res.render('book', {
             ...book,
+            logged_in: req.session.logged_in
         });
       } catch (err) {
         res.status(500).json(err);
