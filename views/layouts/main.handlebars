@@ -23,6 +23,13 @@
         <a href="/login">Login</a>
         {{/if}}
       </nav>
+      <div>
+        <form id="search-form">
+          <input type="text" id="search-input" placeholder="Search...">
+          <button type="submit" id="search-submit">Search</button>
+        </form>
+        <div id="search-results"></div>
+      </div>
     </header>
     <main class="container container-fluid mt-5">
       <h1>Book Blend Reviews</h1>
@@ -38,6 +45,7 @@
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+  <script src="/js/search.js"></script>
 </body>
 
 </html>
