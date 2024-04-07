@@ -106,5 +106,35 @@ router.get('/book', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+router.get('/author/:author', async (req, res) => {
+    try {
+        const author = req.params.author.replace(/-/g, ' ');
+
+        const bookData = await Book.findAll({
+            where: {
+              author: author
+            },
+          });
+
+        const books = bookData.map((book) => book.get({ plain: true }));
+
+        if (books.length === 0) {
+            res.status(404).json({ message: 'No author found with this name!' });
+            return;
+        }
+
+        const authorDisplay = author.toUpperCase();
+
+        res.render('author', {
+            books,
+            authorDisplay,
+            logged_in: req.session.logged_in
+        });
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
   
   module.exports = router;

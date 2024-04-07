@@ -15,20 +15,26 @@ document.querySelector('#search-input').addEventListener('keyup', function(e) {
     })
     .then(res => res.json())
     .then(data => {
-        let output = '<h2>Search Results</h2>';
+        let output = '<div class="search-container"><h2>Search Results</h2>';
 
         if (data.length === 0) {
             output += '<p>No results found</p>';
         } else {
             data.slice(0,10).forEach(function(book) {
+                let authorUrl = `/author/${book.author.toLowerCase().replace(/ /g, '-')}`;
                 output += `
-                    <div class="card card-body mb-2">
-                        <h4>${book.title}</h4>
-                        <h4>${book.author}</h4>
-                    </div>
+                        <div class="search-card">
+                            <a href="/book/${book.id}">
+                                <h4>${book.title}</h4>
+                                <h4><a href="${authorUrl}" onclick="event.stopPropagation();">${book.author}</a></h4>
+                            </a>
+                        </div>
                 `;
             });
         }
+
+        output += '</div>';
+        
         document.querySelector('#search-results').innerHTML = output;
     })
     .catch(err => console.log(err));
