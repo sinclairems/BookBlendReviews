@@ -1,11 +1,17 @@
 const router = require('express').Router();
 const { User, Book, Review } = require('../models');
 const withAuth = require('../utils/auth');
-const { getRandom } = require('../utils/helpers');
+const { getRandom, rate, ratingForm, ratingBackground } = require('../utils/helpers');
 
 router.get('/', async (req, res) => {
     try {
-        res.render('homepage');
+        const rating = ratingForm;
+        const background = ratingBackground;
+        res.render('homepage', {
+            rating,
+            background,
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -17,6 +23,7 @@ router.get('/profile', withAuth, async (req, res) => {
       // Find the logged in user based on the session ID
       const userData = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
+        include: [{ model: Review, include: Book }]
       });
   
       const user = userData.get({ plain: true });
@@ -32,7 +39,9 @@ router.get('/profile', withAuth, async (req, res) => {
 
 router.get('/review', withAuth, async (req, res) => {
     try {
-        res.render('review');
+        res.render('review', {
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -40,12 +49,16 @@ router.get('/review', withAuth, async (req, res) => {
 
 router.get('/book/:id', async (req, res) => {
     try {
+
+        const starForm = ratingForm;
+        const background = ratingBackground;
+
         const bookData = await Book.findByPk(req.params.id, {
             include: [
                 {
                     model: Review,
                     include: User
-                }
+                },
             ]
         });
 
@@ -53,6 +66,9 @@ router.get('/book/:id', async (req, res) => {
 
         res.render('book', {
             ...book,
+            starForm,
+            background,
+            logged_in: req.session.logged_in
         });
       } catch (err) {
         res.status(500).json(err);
@@ -81,7 +97,7 @@ router.get('/book', async (req, res) => {
             include: [
                 {
                     model: Review,
-                    include: User
+                    include: { model: User, attributes: ['name'] }
                 }
             ]
         });
@@ -96,6 +112,36 @@ router.get('/book', async (req, res) => {
       res.render('book', {
         ...book,
         });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/author/:author', async (req, res) => {
+    try {
+        const author = req.params.author.replace(/-/g, ' ');
+
+        const bookData = await Book.findAll({
+            where: {
+              author: author
+            },
+          });
+
+        const books = bookData.map((book) => book.get({ plain: true }));
+
+        if (books.length === 0) {
+            res.status(404).json({ message: 'No author found with this name!' });
+            return;
+        }
+
+        const authorDisplay = author.toUpperCase();
+
+        res.render('author', {
+            books,
+            authorDisplay,
+            logged_in: req.session.logged_in
+        });
+
     } catch (err) {
         res.status(500).json(err);
     }

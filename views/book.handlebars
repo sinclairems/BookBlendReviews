@@ -1,22 +1,28 @@
 <section>
   <h1>{{title}}</h1>
-  <img src="{{filename}}" alt="{{title}}">
+  <img src="/images/{{filename}}" alt="{{title}}">
   <p>Author: {{author}}</p>
   <p>Number of Pages: {{pages}}</p>
   <p>Reviews:</p>
   {{#each reviews}}
-  <div>
+  <div class="review-card">
+    <h3>{{this.user.name}}</h3>
     <p>{{this.content}}</p>
-    <p>Rating: {{this.rating}}</p>
+    <div class="rating-container">
+      <div class="rating">{{{starForm}}}</div>
+      <div class="stars" data-rating="{{this.rating}}">{{{background}}}</div>
+    </div>
   </div>
   {{/each}}
   <div>
     <button>Previous</button>
     <button>Next</button>
-    <button><a href='/views/review.handlebars'>Write A Review</a></button>
+    {{#if title}}
+    <button onclick="location.href='/review?title={{title}}&author={{author}}'">Write A Review</button>
+    {{else}}
+    <button onclick="location.href='review'">Write A Review</button>
+    {{/if}}
   </div>
 </section>
 
-{{!--
-How do I connect the images in public/images to the image property in the book object?
- --}}
+<script src="/js/render.js"></script>

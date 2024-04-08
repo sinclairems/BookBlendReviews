@@ -1,0 +1,13 @@
+<div>
+    <h2>Reviews</h2>
+    {{!-- Display User's Reviews --}}
+    {{#each reviews}}
+    <div class="review-card" data-book-id="{{this.book.id}}">
+        <h3>{{this.book.title}}</h3>
+        <h4>{{this.book.author}}</h4>
+        <p class="review-content">{{this.content}}</p>
+        <p>Rating: {{this.rating}}</p>
+        <p>{{this.user.name}}</p>
+    </div>
+    {{/each}}
+</div>

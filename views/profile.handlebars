@@ -6,3 +6,21 @@
     Link Button to review.handlebars 
     --}}
 </div>
+<div>
+    <h2>Reviews</h2>
+    {{!-- Display User's Reviews --}}
+    {{#each reviews}}
+    <div class="review-card" data-book-id="{{this.book.id}}" data-review-id="{{this.id}}">
+        <h3>{{this.book.title}}</h3>
+        <h4>{{this.book.author}}</h4>
+        <p class="review-content">{{this.content}}</p>
+        <p>Rating: {{this.rating}}</p>
+        <div>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+<script src="/js/reviewHandlers.js"></script>
