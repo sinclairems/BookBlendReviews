@@ -5,9 +5,13 @@
   <p>Number of Pages: {{pages}}</p>
   <p>Reviews:</p>
   {{#each reviews}}
-  <div>
+  <div class="review-card">
+    <h3>{{this.user.name}}</h3>
     <p>{{this.content}}</p>
-    <p>Rating: {{this.rating}}</p>
+    <div class="rating-container">
+      <div class="rating">{{{starForm}}}</div>
+      <div class="stars" data-rating="{{this.rating}}">{{{background}}}</div>
+    </div>
   </div>
   {{/each}}
   <div>
@@ -20,3 +24,5 @@
     {{/if}}
   </div>
 </section>
+
+<script src="/js/render.js"></script>
