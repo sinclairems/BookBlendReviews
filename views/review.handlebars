@@ -15,6 +15,17 @@ Review Books here
     <textarea id="title" name="title" placeholder="Title" required></textarea>
     <textarea id="author" name="author" placeholder="Author" required></textarea>
     <textarea id="review" name="review" placeholder="Enter your review here..." required></textarea>
+    <select id="rating" name="rating" required>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <div class="rating-container">
+      <div class="rating">{{{rating}}}</div>
+      <div class="stars">{{{background}}}</div>
+    </div>
     <button id="submit-review" type="submit">Submit</button>
   </form>
 </section>

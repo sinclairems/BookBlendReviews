@@ -1,11 +1,15 @@
 const router = require('express').Router();
 const { User, Book, Review } = require('../models');
 const withAuth = require('../utils/auth');
-const { getRandom } = require('../utils/helpers');
+const { getRandom, rate, ratingForm, ratingBackground } = require('../utils/helpers');
 
 router.get('/', async (req, res) => {
     try {
+        const rating = ratingForm;
+        const background = ratingBackground;
         res.render('homepage', {
+            rating,
+            background,
             logged_in: req.session.logged_in
         });
     } catch (err) {
@@ -45,12 +49,16 @@ router.get('/review', withAuth, async (req, res) => {
 
 router.get('/book/:id', async (req, res) => {
     try {
+
+        const starForm = ratingForm;
+        const background = ratingBackground;
+
         const bookData = await Book.findByPk(req.params.id, {
             include: [
                 {
                     model: Review,
                     include: User
-                }
+                },
             ]
         });
 
@@ -58,6 +66,8 @@ router.get('/book/:id', async (req, res) => {
 
         res.render('book', {
             ...book,
+            starForm,
+            background,
             logged_in: req.session.logged_in
         });
       } catch (err) {
@@ -87,7 +97,7 @@ router.get('/book', async (req, res) => {
             include: [
                 {
                     model: Review,
-                    include: User
+                    include: { model: User, attributes: ['name'] }
                 }
             ]
         });

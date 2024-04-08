@@ -9,13 +9,43 @@ window.onload = async () => {
     }
 };
 
+const stars = document.querySelector('.stars');
+stars.style.width = '20%';
+
+const rate = (rating) => {
+    const userInput  = document.querySelector('#rating').value;
+
+    switch (userInput) {
+      case '1':
+        stars.style.width = '20%';
+        break;
+      case '2':
+        stars.style.width = '40%';
+        break;
+      case '3':
+        stars.style.width = '60%';
+        break;
+      case '4':
+        stars.style.width = '80%';
+        break;
+      case '5':
+        stars.style.width = '100%';
+        break;
+      default:
+        rating = '1';
+        break;
+    }
+}
+
+document.getElementById('rating').addEventListener('change', rate);
+
 const postHandler = async (e) => {
     e.preventDefault();
     // Get the values from the form
     const title = document.querySelector('#title').value.trim();
     const author = document.querySelector('#author').value.trim();
     const content = document.querySelector('#review').value.trim();
-    console.log(title, author, content);
+    const rating = document.querySelector('#rating').value.trim();
 
     // Get the book id from the URL
     const path = window.location.pathname;
@@ -25,7 +55,7 @@ const postHandler = async (e) => {
 
     // If the URL doesn't have a book id, find the book by title and author
     if (isNaN(book_id)) {
-        if (title && author && content) {
+        if (title && author && content && rating) {
             // Find the book by title and author and return the book id
             const response = await fetch(`/api/reviews/findBook`, {
                 method: 'POST',
@@ -44,7 +74,7 @@ const postHandler = async (e) => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ book_id: bookId, content }),
+                    body: JSON.stringify({ book_id: bookId, content, rating}),
                 });
                 if (reviewResponse.ok) {
                     // Redirect to the book page
@@ -67,7 +97,7 @@ const postHandler = async (e) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ book_id, content }),
+                body: JSON.stringify({ book_id, content, rating}),
             });
         } else {
             alert('Failed to post review');
