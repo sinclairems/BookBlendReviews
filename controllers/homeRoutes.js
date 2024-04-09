@@ -47,6 +47,19 @@ router.get('/review', withAuth, async (req, res) => {
     }
 });
 
+// Get a random book
+router.get('/book', async (req, res) => {
+    try {
+        const bookIds = await Book.findAll({ attributes: ['id'] });
+        const randomindex = getRandom(bookIds.length);
+        const randomId = bookIds[randomindex].id;
+
+        res.redirect(`/book/${randomId}`);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 router.get('/book/:id', async (req, res) => {
     try {
 
@@ -87,35 +100,7 @@ router.get('/login', (req, res) => {
     res.render('login');
   });
 
-// Get a random book
-router.get('/book', async (req, res) => {
-    try {
-        const bookIds = await Book.findAll({ attributes: ['id'] });
-        const randomindex = getRandom(bookIds.length);
-        const randomId = bookIds[randomindex].id;
-        const bookData = await Book.findByPk(randomId, {
-            include: [
-                {
-                    model: Review,
-                    include: { model: User, attributes: ['name'] }
-                }
-            ]
-        });
 
-        if (!bookData) {
-          res.status(404).json({ message: 'No book found with this id!' });
-          return;
-      }
-
-        const book = bookData.get({ plain: true });
-
-      res.render('book', {
-        ...book,
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
 
 router.get('/author/:author', async (req, res) => {
     try {
