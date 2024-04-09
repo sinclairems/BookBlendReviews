@@ -1,3 +1,4 @@
+// Render Stars
 const rate = (stars, rating) => {
     switch (rating) {
       case '1':

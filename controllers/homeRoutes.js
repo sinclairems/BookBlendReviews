@@ -3,6 +3,7 @@ const { User, Book, Review } = require('../models');
 const withAuth = require('../utils/auth');
 const { getRandom, rate, ratingForm, ratingBackground } = require('../utils/helpers');
 
+// Render Star Rating
 router.get('/', async (req, res) => {
     try {
         const rating = ratingForm;
@@ -17,10 +18,9 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Use withAuth middleware to prevent access to route
+// Go to user profile if logged in
 router.get('/profile', withAuth, async (req, res) => {
     try {
-      // Find the logged in user based on the session ID
       const userData = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
         include: [{ model: Review, include: Book }]
@@ -37,6 +37,7 @@ router.get('/profile', withAuth, async (req, res) => {
     }
   });
 
+// See User Reviews if logged in
 router.get('/review', withAuth, async (req, res) => {
     try {
         res.render('review', {
@@ -47,6 +48,7 @@ router.get('/review', withAuth, async (req, res) => {
     }
 });
 
+// Render Star Rating
 router.get('/book/:id', async (req, res) => {
     try {
 
@@ -77,7 +79,6 @@ router.get('/book/:id', async (req, res) => {
 
 // Redirect to login if user is not logged in
 router.get('/login', (req, res) => {
-    // If the user is already logged in, redirect the request to another route
     if (req.session.logged_in) {
       res.redirect(req.session.redirectTo || '/profile');
       delete req.session.redirectTo;
@@ -117,6 +118,7 @@ router.get('/book', async (req, res) => {
     }
 });
 
+// Get book by author
 router.get('/author/:author', async (req, res) => {
     try {
         const author = req.params.author.replace(/-/g, ' ');
