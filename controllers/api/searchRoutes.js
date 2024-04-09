@@ -1,45 +1,65 @@
 const router = require('express').Router();
 const { User, Book, Review } = require('../../models');
 const { Op } = require('sequelize');
+const Fuse = require('fuse.js');
+
+
+
 
 router.post('/', async (req, res) => {
     let search = req.body.search.toLowerCase();
 
     try {
-        const books = await Book.findAll({
-            where: {
-                [Op.or]: [
-                    {
-                        title: {
-                            [Op.like]: `%${search}%`
-                        }
-                    },
-                    {
-                        author: {
-                            [Op.like]: `%${search}%`
-                        }
-                    }
-                ]
-            }
-        });
+        const books = await Book.findAll();
 
-        res.json(books);
+        const options = {
+            keys: ['title', 'author']
+        };
+
+        const fuse = new Fuse(books, options);
+
+        const results = fuse.search(search);
+
+        console.log(results);
+
+        res.json(results);
+
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'An error occurred while searching for books.' });
     }
 });
 
-function searchBooks(query) {
-    const results = fuse.search(query);
+router.post('/results', async (req, res) => {
+    let search = req.body.search.toLowerCase();
 
-    console.log(results); // For initial testing
-}
+    try {
+        const books = await Book.findAll();
 
-const searchInput = document.getElementById("bookSearchInput");
-searchInput.addEventListener("input", (event) => {
-    const searchQuery = event.target.value;
-    searchBooks(searchQuery);
+        const options = {
+            keys: ['title', 'author']
+        };
+
+        const fuse = new Fuse(books, options);
+
+        const results = fuse.search(search);
+
+        const resultsData = results.map(result => {
+            return {
+                id: result.item.id,
+                title: result.item.title,
+                author: result.item.author,
+                pages: result.item.pages
+            };
+        });
+
+        res.render('searchResults', { resultsData });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'An error occurred while searching for books.' });
+    }
+
+
 });
 
 module.exports = router;

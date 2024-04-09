@@ -24,8 +24,8 @@
         {{/if}}
       </nav>
       <div>
-        <form id="search-form">
-          <input type="text" id="search-input" placeholder="Search...">
+        <form id="search-form" action="/api/search/results" method="POST">
+          <input type="text" id="search-input" name="search" placeholder="Search...">
           <button type="submit" id="search-submit">Search</button>
         </form>
         <div id="search-results"></div>
