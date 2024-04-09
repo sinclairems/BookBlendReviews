@@ -1,5 +1,7 @@
 document.querySelector('#search-input').addEventListener('keyup', function(e) {
-    let search = e.target.value.toLowerCase();
+    e.preventDefault();
+
+    let search = document.querySelector('#search-input').value.toLowerCase();
 
     if (search.length < 1) {
         document.querySelector('#search-results').innerHTML = '';
@@ -21,12 +23,12 @@ document.querySelector('#search-input').addEventListener('keyup', function(e) {
             output += '<p>No results found</p>';
         } else {
             data.slice(0,10).forEach(function(book) {
-                let authorUrl = `/author/${book.author.toLowerCase().replace(/ /g, '-')}`;
+                let authorUrl = `/author/${book.item.author.toLowerCase().replace(/ /g, '-')}`;
                 output += `
                         <div class="search-card">
-                            <a href="/book/${book.id}">
-                                <h4>${book.title}</h4>
-                                <h4><a href="${authorUrl}" onclick="event.stopPropagation();">${book.author}</a></h4>
+                            <a href="/book/${book.item.id}">
+                                <h4>${book.item.title}</h4>
+                                <h4><a href="${authorUrl}" onclick="event.stopPropagation();">${book.item.author}</a></h4>
                             </a>
                         </div>
                 `;
@@ -39,3 +41,15 @@ document.querySelector('#search-input').addEventListener('keyup', function(e) {
     })
     .catch(err => console.log(err));
 });
+
+document.querySelector('#search-submit').addEventListener('click', function(e) {
+
+    let search = document.querySelector('#search-input').value.toLowerCase();
+
+});
+
+// const searchInput = document.getElementById("search-input");
+// searchInput.addEventListener("input", (event) => {
+//     const searchQuery = event.target.value;
+//     searchBooks(searchQuery);
+// });
