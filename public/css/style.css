@@ -1,21 +1,122 @@
+/* colors used frequently: tan/page color #d6c7b3, dark red, goldenrod.*/
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+.header {
+    /* background-color: #9A6850; */
+    background-color: darkred;
+    color: goldenrod;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+}
+
+.header button {
+    background-color: #d6c7b3;
+    color: black;
+    padding: 6px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 20;
+    font-family: ;
+    margin: 10px;
+}
+
+.nav {
+    color: goldenrod;
+    float: left;
+}
+.nav a {
+    color: goldenrod;
+    padding: 7px 4px;
+
+}
+
+.input {
+    background-color: #d6c7b3;
+}
+
+#search-form {
+    float: right;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+#search-form button {
+    background-color: #d6c7b3 ;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 20;
+    font-family: ;
+    margin: 10px;
+}
+
+.main h1 {
+    /* background-color: #9A6850; */
+    background-color: darkred;
+    text-align: center;
+    font-size: 60px;
+    color: goldenrod;
+    font-weight: 50;
+    font-family: ;
+    padding-bottom: 30px;
+}
+
+#home-page {
+    background-color: #d6c7b3;
+    color: black;
+    padding: 10px;
+    text-align: center;
+}
+
+
+#home-page h2 {
+    font-size: 50px;
+    font-weight: 50;
+    font-family: ;
+    padding: 20px;
+}
+
+#home-page p {
+    font-size: 30px;
+    font-weight: 20;
+    font-family: ;
+    padding: 20px;
+}
+
+#home-page button {
+    background-color: darkred;
+    color: goldenrod;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 20;
+    font-family: ;
+    margin: 10px;
+}
+
+.home-content {
+    padding: 500px;
+    background-image: url(../Images/jaredd-craig-HH4WBGNyltc-unsplash.jpg);;
+}
 .review-card {
-    border: 1px solid black;
+    border: 3px solid black;
     border-radius: 5px;
     padding: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
+
 }
 
 .search-container {
     position: absolute;
     border: 1px solid black;
     border-radius: 5px;
-
     background-color: white;
     width: 40%;
 }
@@ -55,4 +156,48 @@
     left: 0px;
     width: 150px;
     height: 30px;
+}
+
+#book-page {
+    background-color: #EDE3D6;
+    color: black;
+    text-align: center;
+    padding-top: 20px;
+}
+#book-page h1 {
+    font-size: 50px;
+    font-weight: 50;
+    font-family: ;
+    padding: 20px;
+    position: fixed;
+    border-radius:5px;
+}
+
+#book-page p {
+    font-size: 30px;
+    font-weight: 20;
+    font-family: ;
+    padding: 20px;
+}
+
+#book-page button {
+    background-color: darkred;
+    color: goldenrod;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 20;
+    font-family: ;
+    margin: 10px;
+}
+
+
+.footer {
+    /* background-color: #9A6850; */
+    background-color: darkred;
+    color: goldenrod;
+    padding: 10px;
+    text-align: center; 
+    width: 100%;
+    height: 130px;
 }
