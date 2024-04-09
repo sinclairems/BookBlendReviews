@@ -1,0 +1,14 @@
+<div class="results">
+    <h2>Search Results</h2>
+    <ul>
+        {{#each resultsData}}
+        <li>
+        <a href="/book{{this.id}}">
+            <h3>{{this.title}}</h3>
+        </a>
+        <p>Author: {{this.author}}</p>
+        <p>Number of Pages: {{this.pages}}</p>
+        </li>
+        {{/each}}
+    </ul>
+</div>

@@ -3,18 +3,42 @@
     "user_id": 1,
     "book_id": 1,
     "posted_on": "2019-03-12",
-    "content": "I really enjoyed A Philosophy of Walking. Highly recommend!"
+    "content": "I really enjoyed A Philosophy of Walking. Highly recommend!",
+    "rating": 4
   },
   {
     "user_id": 2,
     "book_id": 2,
     "posted_on": "2020-10-10",
-    "content": "Farenheit 451 is a must read!"
+    "content": "Farenheit 451 is a must read!",
+    "rating": 5
   },
   {
     "user_id": 3,
     "book_id": 5,
     "posted_on": "2021-05-07",
-    "content": "Every Summer After is a great book!"
+    "content": "Every Summer After is a great book!",
+    "rating": 4
+  },
+  {
+    "user_id": 4,
+    "book_id": 3,
+    "posted_on": "2021-06-01",
+    "content": "In Five Years? More like five years off my life",
+    "rating": 1
+  },
+  {
+    "user_id": 5,
+    "book_id": 4,
+    "posted_on": "2022-03-11",
+    "content": "Not bad, but not my cup of tea.",
+    "rating": 3
+  },
+  {
+    "user_id": 6,
+    "book_id": 6,
+    "posted_on": "2022-04-01",
+    "content": "I wish he had told me not to waste my time on this book.",
+    "rating": 2
   }
 ]
