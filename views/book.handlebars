@@ -1,4 +1,4 @@
-<section>
+<section id="book-page">
   <h1>{{title}}</h1>
   <img src="/images/{{filename}}" alt="{{title}}">
   <p>Author: {{author}}</p>
@@ -15,12 +15,12 @@
   </div>
   {{/each}}
   <div>
-    <button id="previous">Previous</button>
-    <button id="next">Next</button>
+    <button class="button" id="previous">Previous</button>
+    <button class="button" id="next">Next</button>
     {{#if title}}
-    <button onclick="location.href='/review?title={{title}}&author={{author}}'">Write A Review</button>
+    <button class="button" onclick="location.href='/review?title={{title}}&author={{author}}'">Write A Review</button>
     {{else}}
-    <button onclick="location.href='review'">Write A Review</button>
+    <button class="button" onclick="location.href='review'">Write A Review</button>
     {{/if}}
   </div>
 </section>

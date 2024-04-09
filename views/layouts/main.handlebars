@@ -10,33 +10,33 @@
 
 <body>
   <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <nav>
+    <header class="header display-flex justify-space-between align-center p-2">
+      <nav class="nav">
         <a href="/">Home</a> 
         <a href="/book">View Books</a>
         <a href="/review">Write a Review</a>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a href="/profile">Profile</a> |
-        <button class="no-button" id="logout">Logout</button>
+        <button class="button" class="no-button" id="logout">Logout</button>
         {{else}}
         <a href="/login">Login</a>
         {{/if}}
       </nav>
       <div>
-        <form id="search-form" action="/api/search/results" method="POST">
-          <input type="text" id="search-input" name="search" placeholder="Search...">
-          <button type="submit" id="search-submit">Search</button>
+        <form id="search-form">
+          <input class="input" type="text" id="search-input" placeholder="Search...">
+          <button class="button" type="submit" id="search-submit">Search</button>
         </form>
         <div id="search-results"></div>
       </div>
     </header>
-    <main class="container container-fluid mt-5">
+    <main class="main container container-fluid mt-5">
       <h1>Book Blend Reviews</h1>
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
-    <footer>
+    <footer class="footer">
       <p>Book Blend Reviews</p>
     </footer>
   </div>
