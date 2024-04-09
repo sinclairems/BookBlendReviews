@@ -30,4 +30,16 @@ router.post('/', async (req, res) => {
     }
 });
 
+function searchBooks(query) {
+    const results = fuse.search(query);
+
+    console.log(results); // For initial testing
+}
+
+const searchInput = document.getElementById("bookSearchInput");
+searchInput.addEventListener("input", (event) => {
+    const searchQuery = event.target.value;
+    searchBooks(searchQuery);
+});
+
 module.exports = router;
