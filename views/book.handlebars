@@ -15,8 +15,8 @@
   </div>
   {{/each}}
   <div>
-    <button>Previous</button>
-    <button>Next</button>
+    <button id="previous">Previous</button>
+    <button id="next">Next</button>
     {{#if title}}
     <button onclick="location.href='/review?title={{title}}&author={{author}}'">Write A Review</button>
     {{else}}
@@ -26,3 +26,4 @@
 </section>
 
 <script src="/js/render.js"></script>
+<script src="/js/carousel.js"></script>
