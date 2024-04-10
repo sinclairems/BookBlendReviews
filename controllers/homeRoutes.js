@@ -132,5 +132,16 @@ router.get('/author/:author', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+router.get('/results', async (req, res) => {
+    try {
+        res.render('searchResults', {
+            logged_in: req.session.logged_in,
+            resultsData: req.session.resultsData
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
   
   module.exports = router;

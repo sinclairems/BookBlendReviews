@@ -1,14 +1,16 @@
-<div class="results">
-    <h2>Search Results</h2>
-    <ul>
+<div class="results-container">
+    <div class="results">
+        <h2>Search Results</h2>
         {{#each resultsData}}
-        <li>
-        <a href="/book{{this.id}}">
-            <h3>{{this.title}}</h3>
-        </a>
-        <p>Author: {{this.author}}</p>
-        <p>Number of Pages: {{this.pages}}</p>
-        </li>
+        <div class="result-card">
+            <a href="/book/{{this.id}}">
+                <h3>{{this.title}}</h3>
+            </a>
+            <a href="/author/{{replace (toLowerCase this.author) ' ' '-'}}">
+                <p>Author: {{this.author}}</p>
+            </a>
+            <p>Number of Pages: {{this.pages}}</p>
+        </div>
         {{/each}}
-    </ul>
+    </div>
 </div>

@@ -1,26 +1,32 @@
 <section id="book-page">
   <h1>{{title}}</h1>
-  <img src="/images/{{filename}}" alt="{{title}}">
+  <div class="carousel">
+    <button class="button" id="previous">Previous</button>
+    <img src="/images/{{filename}}" alt="{{title}}">
+    <button class="button" id="next">Next</button>
+  </div>
   <p>Author: {{author}}</p>
   <p>Number of Pages: {{pages}}</p>
   <p>Reviews:</p>
-  {{#each reviews}}
-  <div class="review-card">
-    <h3>{{this.user.name}}</h3>
-    <p>{{this.content}}</p>
-    <div class="rating-container">
-      <div class="rating">{{{starForm}}}</div>
-      <div class="stars" data-rating="{{this.rating}}">{{{background}}}</div>
+  <div class="review-container">
+    {{#each reviews}}
+    <div class="review-card">
+      <h3>{{this.user.name}}</h3>
+      <p>{{this.content}}</p>
+      <div class="rating-container">
+        <div class="rating">{{{starForm}}}</div>
+        <div class="stars" data-rating="{{this.rating}}">{{{background}}}</div>
+      </div>
     </div>
+    {{/each}}
   </div>
-  {{/each}}
   <div>
     <button class="button" id="previous">Previous</button>
     <button class="button" id="next">Next</button>
     {{#if title}}
-    <button class="button" onclick="location.href='/review?title={{title}}&author={{author}}'">Write A Review</button>
+    <button class="button" id="review" onclick="location.href='/review?title={{title}}&author={{author}}'">Write A Review</button>
     {{else}}
-    <button class="button" onclick="location.href='review'">Write A Review</button>
+    <button class="button" id="review" onclick="location.href='review'">Write A Review</button>
     {{/if}}
   </div>
 </section>

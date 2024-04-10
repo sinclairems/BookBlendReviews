@@ -1,4 +1,5 @@
 // Render Stars
+document.addEventListener('DOMContentLoaded', () => {
 const rate = (stars, rating) => {
     switch (rating) {
       case '1':
@@ -27,3 +28,18 @@ const rate = (stars, rating) => {
     const rating = stars.getAttribute('data-rating');
     rate(stars, rating);
   });
+
+  let textareas = document.querySelectorAll('textarea');
+  function autoResize() {
+      let style = window.getComputedStyle(this, null);
+      let lineHeight = parseInt(style.getPropertyValue('line-height'), 10);
+      this.style.height = lineHeight + 'px'; // Set initial height to single line height
+      let lines = this.value.split('\n').length;
+      this.style.height = (lineHeight * lines) + 'px';
+  }
+  
+  textareas.forEach(textarea => {
+      textarea.addEventListener('input', autoResize, false);
+      autoResize.call(textarea);
+  });
+});
