@@ -37,7 +37,9 @@ const rate = (rating) => {
   }
 };
 
-document.getElementById("rating").addEventListener("change", rate);
+if (document.getElementById("rating")) {
+  document.getElementById("rating").addEventListener("change", rate);
+};
 
 const postHandler = async (e) => {
   e.preventDefault();
@@ -123,6 +125,11 @@ const editHandler = async (e) => {
   const textArea = document.createElement("textarea");
   textArea.textContent = content;
 
+  textArea.addEventListener('input', function autoResize() {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+  }, false);
+
   pElement.replaceWith(textArea);
 
   const submitButton = document.createElement("button");
@@ -151,6 +158,10 @@ const editHandler = async (e) => {
       document.location.reload();
     }
   });
+
+  textArea.style.height = 'auto';
+  textArea.style.height = textArea.scrollHeight + 'px';
+  
 };
 
 if (document.querySelector(".edit-btn")) {

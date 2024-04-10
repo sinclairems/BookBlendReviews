@@ -12,7 +12,10 @@ const rate = (rating) => {
   const userInput  = document.querySelector('#rating').value;
   const stars = document.querySelectorAll('.stars');
 
-  stars.style.width = 0;
+  stars.forEach(star => {
+    star.style.width = 0;
+  });
+
   switch (userInput) {
     case '1':
       rating = '1';
@@ -33,7 +36,16 @@ const rate = (rating) => {
       rating = '1';
       break;
   }
-  
+
+  return rating;
 }
 
-module.exports = { getRandom, rate, ratingForm, ratingBackground };
+const toLowerCase = (str) => {
+  return str.toLowerCase();
+}
+
+const replace = (str, find, replaceWith) => {
+  return str.replace(new RegExp(find, 'g'), replaceWith);
+}
+
+module.exports = { getRandom, rate, ratingForm, ratingBackground, toLowerCase, replace};

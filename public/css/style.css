@@ -1,6 +1,6 @@
 /* colors used frequently: tan/page color #d6c7b3, dark red, goldenrod.*/
 :root {
-    --background: #d6c7b3;
+    --background: #EDE3D6;
     --header-footer: darkred;
     --accent: goldenrod;
     --primary-font: 'Marcellus', serif;
@@ -11,6 +11,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto;
 }
 
 .header {
@@ -117,19 +127,33 @@
     background-size: cover;
 }
 .review-card {
+    background-color: white;
     border: 3px solid black;
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
+    width: 50vw;
 
 }
 
 .search-container {
     position: absolute;
+    top: 50px;
+    right: 5px;
     border: 1px solid black;
     border-radius: 5px;
     background-color: white;
     width: 40%;
+    z-index: 1;
+    box-shadow: 0 0 8px black;
+    
+    & h2 {
+        font-size: 30px;
+        font-weight: 50;
+        font-family: var(--primary-font);
+        padding: 10px;
+        background-color: var(--header-footer);
+    }
 }
 
 .search-card {
@@ -138,6 +162,14 @@
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
+
+
+
+    & a {
+        text-decoration: none;
+        color: black;
+        font-family: var(--secondary-font)
+    };
 
 }
 
@@ -170,25 +202,35 @@
 }
 
 #book-page {
-    background-color: #EDE3D6;
+    background-color: var(--background);
     color: black;
     text-align: center;
     padding-top: 20px;
+
 }
+
+#book-page img {
+    margin: 20px;
+    width: 40%;
+    height: 40%;
+}
+
 #book-page h1 {
     font-size: 50px;
     font-weight: 50;
     font-family: var(--primary-font);
     padding: 20px;
-    position: fixed;
-    border-radius:5px;
+    position: sticky;
+    top: 0;
+    border-radius: 0 5px 5px 0;
+    width: 50%;
 }
 
 #book-page p {
     font-size: 30px;
     font-weight: 20;
     font-family: var(--secondary-font);
-    padding: 20px;
+    padding: 15px;
 }
 
 #book-page button {
@@ -202,6 +244,17 @@
     margin: 10px;
 }
 
+#book-page .carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.review-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .footer {
     /* background-color: #9A6850; */
@@ -213,9 +266,270 @@
     height: 130px;
 }
 
+.results-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .results {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    padding: 10px;
+    margin: 50px;
+}
+
+.result-card {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 50vw;
+
+    & a {
+        text-decoration: none;
+        color: black;
+        font-size: 25px;
+        margin: 2px;
+    }
+
+    & p {
+        font-size: 20px;
+        font-weight: 20;
+        font-family: var(--secondary-font);
+        padding: 3px;
+    }
+}
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+
+    & h2 {
+        font-size: 50px;
+        font-weight: 50;
+        font-family: var(--primary-font);
+        padding: 20px;
+    }
+
+    & button {
+        background-color: darkred;
+        color: goldenrod;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: 20;
+        font-family: var(--primary-font);
+        margin: 10px;
+    }
+}
+
+.login-container, .signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    padding: 20px;
+    margin: 20px;
+    width: 50%;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+
+    & label {
+        font-size: 20px;
+        font-weight: 20;
+        font-family: var(--secondary-font);
+        padding: 10px;
+    }
+}
+
+.profile {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 50px;
+
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+    background-color: var(--header-footer);
+    color: var(--accent);
+    padding: 20px 20px 100px 20px;
+    border-radius: 5px;
+
+    & h2 {
+        font-size: 40px;
+        font-weight: 50;
+        font-family: var(--primary-font);
+        padding: 20px;
+    }
+
+    & p {
+        font-size: 20px;
+        font-weight: 20;
+        font-family: var(--secondary-font);
+        padding: 5px;
+    }
+
+}
+
+.profile-review-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    & .review-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    & h2 {
+        font-size: 40px;
+        font-family: var(--primary-font);
+        padding: 10px;
+    }
+
+    & h3 {
+        font-size: 30px;
+        font-family: var(--primary-font);
+        padding: 0px;
+        font-weight: 50;
+    }
+
+    & h4 {
+        font-size: 25px;
+        font-family: var(--primary-font);
+        padding-bottom: 10px;
+        font-weight: 30;
+    }
+
+    & p, textarea {
+        font-size: 18px;
+        font-family: var(--secondary-font);
+        padding: 5px;
+    }
+
+    & textarea {
+        width: 80%;
+    }
+
+    & button {
+        background-color: var(--background);
+        color: black;
+        padding: 2px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-family: var(--primary-font);
+        margin: 10px;
+        width: 100px;
+    }
+}
+
+.review-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    width: 50%;
+
+    & button {
+        background-color: darkred;
+        color: goldenrod;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: 20;
+        font-family: var(--primary-font);
+        margin: 10px;
+    }
+
+    & .book-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+
+        & textarea {
+            width: 40%;
+            line-height: 1.5;
+            resize: none;
+            margin: 20px;
+            padding: 0px 5px;
+            font-size: 20px;
+            font-family: var(--secondary-font);
+        }
+    }
+
+    & #review {
+        width: 100%;
+        min-height: 300px;
+        resize: none;
+        font-size: 20px;
+        font-family: var(--secondary-font);
+        padding: 0px 5px;
+        margin: 20px;
+    }
+
+    & .rate-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px;
+    }
+}
+
+.author-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+
+    & h2 {
+        font-size: 50px;
+        font-family: var(--primary-font);
+        padding: 20px;
+    }
+
+    & a {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        margin: 15px;
+        font-family: var(--secondary-font);
+    }
+
+
+}
+
+a:hover {
+    color: var(--accent);
+    text-decoration: underline;
 }

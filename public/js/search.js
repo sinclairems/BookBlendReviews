@@ -42,11 +42,11 @@ document.querySelector('#search-input').addEventListener('keyup', function(e) {
     .catch(err => console.log(err));
 });
 
-document.querySelector('#search-submit').addEventListener('click', function(e) {
+// document.querySelector('#search-submit').addEventListener('click', function(e) {
+//     e.preventDefault();
+//     let search = document.querySelector('#search-input').value.toLowerCase();
 
-    let search = document.querySelector('#search-input').value.toLowerCase();
-
-});
+// });
 
 // const searchInput = document.getElementById("search-input");
 // searchInput.addEventListener("input", (event) => {

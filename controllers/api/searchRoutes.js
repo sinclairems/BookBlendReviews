@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { User, Book, Review } = require('../../models');
 const { Op } = require('sequelize');
 const Fuse = require('fuse.js');
+const { toLowerCase, replace } = require('../../utils/helpers');
 
 
 
@@ -53,7 +54,9 @@ router.post('/results', async (req, res) => {
             };
         });
 
-        res.render('searchResults', { resultsData });
+        req.session.resultsData = resultsData;
+
+        res.redirect('/results');
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'An error occurred while searching for books.' });

@@ -1,8 +1,10 @@
-<div>
+<div class="author-page">
     <h2>{{authorDisplay}}</h2>
     {{#each books}}
     <div class="book-card">
-        <h3>{{this.title}}</h3>
+        <a href="/book/{{this.id}}">
+            <h3>{{this.title}}</h3>
+        </a>
     </div>
     {{/each}}  
 </div>
