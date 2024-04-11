@@ -56,6 +56,24 @@ footer {
 
 }
 
+.logout-form {
+    display: inline;
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    font-size: 20px;
+    display: inline;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 .input {
     background-color: var(--background);
     padding: 5px;
