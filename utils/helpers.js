@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const ratingForm = fs.readFileSync(path.join(__dirname, '../public/images/rating-form.svg'), 'utf8');
-const ratingBackground = fs.readFileSync(path.join(__dirname, '../public/images/star-background.svg'), 'utf8');
+const ratingForm = fs.readFileSync(path.join(__dirname, '../public/Images/rating-form.svg'), 'utf8');
+const ratingBackground = fs.readFileSync(path.join(__dirname, '../public/Images/star-background.svg'), 'utf8');
 
 const getRandom = (max) => {
   return Math.floor(Math.random() * max);
