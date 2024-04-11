@@ -56,6 +56,24 @@ footer {
 
 }
 
+.logout-form {
+    display: inline;
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    font-size: 20px;
+    display: inline;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 .input {
     background-color: var(--background);
     padding: 5px;
@@ -308,7 +326,9 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 50px;
+    /* margin: 50px; */
+    border: solid 50px var(--background);
+    background-color: var(--background);
 
     & h2 {
         font-size: 50px;
@@ -359,7 +379,6 @@ footer {
     justify-content: space-around;
     align-items: center;
     margin: 50px;
-
 }
 
 .profile-header {
@@ -448,6 +467,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: var(--background);
 
 }
 

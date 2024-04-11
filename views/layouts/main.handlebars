@@ -22,8 +22,10 @@
         <a href="/review">Write a Review</a>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/profile">Profile</a> |
-        <a href="/logout" id="logout">Logout</a>
+        <a href="/profile">Profile</a>
+        <form action="/api/users/logout" method="post" class="logout-form">
+          <input id="logout" type="submit" value="Logout" class="logout-button">
+        </form>
         {{else}}
         <a href="/login">Login</a>
         {{/if}}
