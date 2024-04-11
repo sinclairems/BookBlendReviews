@@ -1,126 +1,47 @@
-# 15 Project 2: Interactive Full-Stack Application
+# Book Blend Reviews
+We saw a need for an application that assists in selecting your next book while also providing access to reviews from fellow book enthusiasts, allowing users to both view and contribute reviews. Enjoy our site!
 
-Projects play a key role in your journey to becoming a full-stack web developer. As you enter the last phase of the boot camp, you’ll begin to apply for development jobs. If you want to land interviews, your portfolio must feature high-quality deployed examples of your work—-and you can use your finished projects for that very purpose.
+Here's what you'll see when you visit [Book Blend Reviews](https://book-blend-reviews-e430070779d0.herokuapp.com/)
 
-As your first opportunity to show employers your collaborative skills and coding abilities, this particular project will be a focal point of your portfolio. Employers want to see what you can do, but they also want to see how you work with other developers. The more examples of deployed collaborative work you have in your portfolio, the more likely you are to get an interview and a job.
+![Screenshot1](public/Images/screenshot1.png)
 
-## Project Requirements
+![Screenshot2](public/Images/screenshot2.png)
 
-You and your group will use everything you’ve learned over the past six modules to create a real-world full-stack application that you’ll be able to showcase to potential employers. The user story and acceptance criteria will depend on the project that you create, but your project must fulfil the following requirements:
+## User Story
+As a book lover, I want to be able to search for books by title, author, or genre so that I can find my next read. I also want to be able to read reviews from other users and contribute my own reviews.
 
-* Use Node.js and Express.js to create a RESTful API.
+## Technologies Used
+  - bCrypt
+  - Sequelize
+  - Express
+  - Handlebars
+  - Fuse - Our new technology
+  - MySQL
+  - And a few others...see the package.json file for the full list
 
-* Use Handlebars.js as the template engine.
+  ## Future Development
+Our future for the site entails converting Book Blend Reviews into a social media platform. This transformation will enable users to follow and like reviews from friends, and even offer recommendations for their next reading choices.
 
-* Use MySQL and the Sequelize ORM for the database.
+  ## Collaborators
+  [Noah Meister](https://github.com/njmeister) - Coding Wizard 🪄
 
-* Have both GET and POST routes for retrieving and adding new data.
+  [Claire Shipley](https://github.com/cshipley98) - Research/Presentation Virtuoso ✨
 
-* Use at least one new library, package, or technology that we haven’t discussed.
+  [Luke Pace](https://github.com/PacL00) - CSS Genius 🎓
 
-* Have a folder structure that meets the MVC paradigm.
+  [Erin Sinclair](https://github.com/sinclairems) - Organization Oracle 🔮
 
-* Include authentication (express-session and cookies).
+  ## Credits
 
-* Protect API keys and sensitive information with environment variables.
+ * Class notes - especially the SQL, ORM, and MVC Modules
 
-* Be deployed using Heroku (with data).
+* [Fuse.js](https://www.fusejs.io/)
 
-* Have a polished UI.
+* [Generated User Data](https://randomuser.me/)
 
-* Be responsive.
+* Copilot
 
-* Be interactive (i.e., accept and respond to user input).
+## License
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-* Meet good-quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality reviews, etc.).
-
-* Have a professional README (with unique name, description, technologies used, screenshot, and link to deployed application).
-
-## Presentation Requirements
-
-Use this [project presentation template](https://docs.google.com/presentation/d/10QaO9KH8HtUXj__81ve0SZcpO5DbMbqqQr4iPpbwKks/edit?usp=sharing) to address the following: 
-
-* Elevator pitch: a one minute description of your application
-
-* Concept: What is your user story? What was your motivation for development?
-
-* Process: What were the technologies used? How were tasks and roles broken down and assigned? What challenges did you encounter? What were your successes?
-
-* Demo: Show your stuff!
-
-* Directions for Future Development
-
-* Links to the deployed application and the GitHub repository. Use the [Guide to Deploy with Heroku and MySQL](https://coding-boot-camp.github.io/full-stack/heroku/deploy-with-heroku-and-mysql) on The Full-Stack Blog if you need a reminder on how to deploy to Heroku.
-
-## Grading Requirements
-
-This project is graded based on the following criteria:
-
-### Technical Acceptance Criteria: 25%
-
-* Satisfies the following code requirements:
-
-  * Application uses a Node.js and Express.js back end and uses both GET and POST routes for retrieving and adding new data.
-
-  * Application has a folder structure that meets the MVC paradigm and uses Handlebars.js as the template engine.
-
-  * Application is backed by a MySQL database with a Sequelize ORM and protects API keys and sensitive information with environment variables.
-
-  * Application includes user authentication (express-session and cookies).
-
-  * Application uses at least one new library, package, or technology not covered in class.
-
-### Concept 10%
-
-* Application should be a unique and novel idea.
-
-* Your group should clearly and concisely articulate your project idea.
-
-### Deployment: 20%
-
-* Application deployed at live URL on Heroku and loads with no errors.
-
-* Application GitHub URL submitted.
-
-### Repository Quality: 10%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id-naming conventions, indentation, quality reviews, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality README file with description, screenshot, and link to deployed application.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application is responsive.
-
-### Presentation 10%
-
-* Your group should present using a slide deck.
-
-* Every group member should speak during the presentation.
-
-* Your presentation should follow the [Project Presentation Template](https://docs.google.com/presentation/d/10QaO9KH8HtUXj__81ve0SZcpO5DbMbqqQr4iPpbwKks/edit?usp=sharing).
-
-### Collaboration 10%
-
-* There are no major disparities in the number of GitHub contributions between group members.
-
-## How to Submit Your Interactive Full-Stack Project
-
-**Each member of your group** is required to submit the following for review:
-
-* The URL of the deployed application.
-
-* The URL of the GitHub repository, with a unique name and a README describing the project.
-
----
-© 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+This project is licensed under the MIT license.
