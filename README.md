@@ -23,13 +23,13 @@ As a book lover, I want to be able to search for books by title, author, or genr
 Our future for the site entails converting Book Blend Reviews into a social media platform. This transformation will enable users to follow and like reviews from friends, and even offer recommendations for their next reading choices.
 
   ## Collaborators
-  [Noah Meister](https://github.com/njmeister) - Coding Wizard
+  [Noah Meister](https://github.com/njmeister) - Coding Wizard 🪄
 
-  [Claire Shipley](https://github.com/cshipley98) - Research/Presentation Virtuoso 
+  [Claire Shipley](https://github.com/cshipley98) - Research/Presentation Virtuoso ✨
 
-  [Luke Pace](https://github.com/PacL00) - CSS Genius
+  [Luke Pace](https://github.com/PacL00) - CSS Genius 🎓
 
-  [Erin Sinclair](https://github.com/sinclairems) - Organization Oracle
+  [Erin Sinclair](https://github.com/sinclairems) - Organization Oracle 🔮
 
   ## Credits
 
